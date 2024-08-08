@@ -16,11 +16,11 @@ all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. GPIO_IN NO EVENT SHALL
 THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-DEALINGS IN THE SOFTWARE.
+LIABILITY, WHETHER GPIO_IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, GPIO_OUT OF OR GPIO_IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS GPIO_IN THE SOFTWARE.
 */
 
 #include <algorithm>
@@ -111,18 +111,18 @@ namespace GPIO
             if (is_in(ch_info.channel, global()._channel_configuration))
                 global()._cleanup_one(ch_info);
 
-            if (direction == OUT)
+            if (direction == GPIO_OUT)
             {
                 global()._setup_single_out(ch_info, initial);
             }
-            else if (direction == IN)
+            else if (direction == GPIO_IN)
             {
                 if (!is_None(initial))
                     throw std::runtime_error("initial parameter is not valid for inputs");
                 global()._setup_single_in(ch_info);
             }
             else
-                throw std::runtime_error("GPIO direction must be IN or OUT");
+                throw std::runtime_error("GPIO direction must be GPIO_IN or GPIO_OUT");
         }
         catch (std::exception& e)
         {
@@ -151,7 +151,7 @@ namespace GPIO
 
     void setup(const std::vector<std::string>& channels, Directions direction, const std::vector<int>& initials)
     {
-        if (direction == Directions::OUT && channels.size() != initials.size())
+        if (direction == Directions::GPIO_OUT && channels.size() != initials.size())
             throw std::runtime_error(format("Number of values (%d) != number of channels (%d)", initials.size(), channels.size()));
 
         for (std::size_t i = 0; i < channels.size(); i++)
@@ -234,7 +234,7 @@ namespace GPIO
 
             Directions app_cfg = global()._app_channel_configuration(ch_info);
 
-            if (app_cfg != IN && app_cfg != OUT)
+            if (app_cfg != GPIO_IN && app_cfg != GPIO_OUT)
                 throw std::runtime_error("You must setup() the GPIO channel first");
 
             ch_info.f_value->seekg(0, std::ios::beg);
@@ -258,7 +258,7 @@ namespace GPIO
         {
             ChannelInfo ch_info = global()._channel_to_info(channel, true);
             // check that the channel has been set as output
-            if (global()._app_channel_configuration(ch_info) != OUT)
+            if (global()._app_channel_configuration(ch_info) != GPIO_OUT)
                 throw std::runtime_error("The GPIO channel has not been set up as an OUTPUT");
             global()._output_one(ch_info, value);
         }
@@ -330,7 +330,7 @@ namespace GPIO
         {
             // channel must be setup as input
             Directions app_cfg = global()._app_channel_configuration(ch_info);
-            if (app_cfg != Directions::IN)
+            if (app_cfg != Directions::GPIO_IN)
                 throw std::runtime_error("You must setup() the GPIO channel as an input first");
 
             return _edge_event_detected(ch_info.gpio);
@@ -357,7 +357,7 @@ namespace GPIO
 
             // channel must be setup as input
             Directions app_cfg = global()._app_channel_configuration(ch_info);
-            if (app_cfg != Directions::IN)
+            if (app_cfg != Directions::GPIO_IN)
             {
                 throw std::runtime_error("You must setup() the GPIO channel as an input first");
             }
@@ -410,7 +410,7 @@ namespace GPIO
 
             // channel must be setup as input
             Directions app_cfg = global()._app_channel_configuration(ch_info);
-            if (app_cfg != Directions::IN)
+            if (app_cfg != Directions::GPIO_IN)
             {
                 throw std::runtime_error("You must setup() the GPIO channel as an input first");
             }
@@ -468,7 +468,7 @@ namespace GPIO
 
             // channel must be setup as input
             Directions app_cfg = global()._app_channel_configuration(ch_info);
-            if (app_cfg != Directions::IN)
+            if (app_cfg != Directions::GPIO_IN)
             {
                 throw std::runtime_error("You must setup() the GPIO channel as an input first");
             }

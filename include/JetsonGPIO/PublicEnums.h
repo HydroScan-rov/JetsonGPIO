@@ -14,11 +14,11 @@ all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. GPIO_IN NO EVENT SHALL
 THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-DEALINGS IN THE SOFTWARE.
+LIABILITY, WHETHER GPIO_IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, GPIO_OUT OF OR GPIO_IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS GPIO_IN THE SOFTWARE.
 */
 
 #pragma once
@@ -59,7 +59,7 @@ namespace GPIO
     // UNKNOWN constant is for gpios that are not yet setup
     // If the user uses UNKNOWN or HARD_PWM as a parameter to GPIO::setmode function,
     // An exception will occur
-    PUBLIC_ENUM_CLASS(Directions, UNKNOWN, OUT, IN, HARD_PWM);
+    PUBLIC_ENUM_CLASS(Directions, UNKNOWN, GPIO_OUT, GPIO_IN, HARD_PWM);
 
     // GPIO Event Types
     PUBLIC_ENUM_CLASS(Edge, UNKNOWN, NONE, RISING, FALLING, BOTH);
@@ -74,8 +74,8 @@ namespace GPIO
     // check: https://github.com/NVIDIA/jetson-gpio/issues/5
 
     // alias for GPIO::Directions
-    constexpr Directions IN = Directions::IN;
-    constexpr Directions OUT = Directions::OUT;
+    constexpr Directions GPIO_IN = Directions::GPIO_IN;
+    constexpr Directions GPIO_OUT = Directions::GPIO_OUT;
 
     // alias for GPIO::Edge
     constexpr Edge NO_EDGE = Edge::NONE;

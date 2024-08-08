@@ -15,11 +15,11 @@ all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. GPIO_IN NO EVENT SHALL
 THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-DEALINGS IN THE SOFTWARE.
+LIABILITY, WHETHER GPIO_IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, GPIO_OUT OF OR GPIO_IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS GPIO_IN THE SOFTWARE.
 */
 
 #include <signal.h>
@@ -90,7 +90,7 @@ void callback_two(const std::string& button_pin)
 */
 int testEvents()
 {
-    GPIO::setup(button_pin, GPIO::IN);
+    GPIO::setup(button_pin, GPIO::GPIO_IN);
 
     cout << endl << "### Events Sample Test ###" << endl;
     cout << "#~~ Press CTRL+C to exit" << endl;
@@ -195,7 +195,7 @@ void wait_thread(void)
 
 void testEventsConcurrency()
 {
-    GPIO::setup(button_pin, GPIO::IN);
+    GPIO::setup(button_pin, GPIO::GPIO_IN);
 
     cout << endl << "### Concurrent Test Begun ###" << endl;
     cout << endl << "#? Testing event detect whilst blocking_wait-thread is executed concurrently ?#" << endl;

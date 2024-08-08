@@ -16,11 +16,11 @@ all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. GPIO_IN NO EVENT SHALL
 THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-DEALINGS IN THE SOFTWARE.
+LIABILITY, WHETHER GPIO_IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, GPIO_OUT OF OR GPIO_IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS GPIO_IN THE SOFTWARE.
 */
 
 #pragma once
@@ -60,8 +60,8 @@ namespace GPIO
     NumberingModes getmode();
 
     /* Function used to setup individual pins as Input or Output.
-       @direction must be IN or OUT
-       @initial must be HIGH, LOW or -1 and is only valid when direction is OUT  */
+       @direction must be GPIO_IN or GPIO_OUT
+       @initial must be HIGH, LOW or -1 and is only valid when direction is GPIO_OUT  */
     void setup(const std::string& channel, Directions direction, int initial = -1);
     void setup(int channel, Directions direction, int initial = -1);
     void setup(const std::vector<std::string>& channels, Directions direction, int initial = -1);

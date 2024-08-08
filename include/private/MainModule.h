@@ -16,11 +16,11 @@ all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. GPIO_IN NO EVENT SHALL
 THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-DEALINGS IN THE SOFTWARE.
+LIABILITY, WHETHER GPIO_IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, GPIO_OUT OF OR GPIO_IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS GPIO_IN THE SOFTWARE.
 */
 
 #pragma once
@@ -66,11 +66,11 @@ namespace GPIO
                                                     bool need_pwm = false);
 
         /* Return the current configuration of a channel as reported by sysfs.
-           Any of IN, OUT, HARD_PWM, or UNKNOWN may be returned. */
+           Any of GPIO_IN, GPIO_OUT, HARD_PWM, or UNKNOWN may be returned. */
         Directions _sysfs_channel_configuration(const ChannelInfo& ch_info);
 
         /* Return the current configuration of a channel as requested by this
-           module in this process. Any of IN, OUT, or UNKNOWN may be returned. */
+           module in this process. Any of GPIO_IN, GPIO_OUT, or UNKNOWN may be returned. */
         Directions _app_channel_configuration(const ChannelInfo& ch_info);
 
         void _export_gpio(const ChannelInfo& ch_info);

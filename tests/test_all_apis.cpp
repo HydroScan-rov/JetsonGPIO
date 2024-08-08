@@ -14,11 +14,11 @@ all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. GPIO_IN NO EVENT SHALL
 THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-DEALINGS IN THE SOFTWARE.
+LIABILITY, WHETHER GPIO_IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, GPIO_OUT OF OR GPIO_IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS GPIO_IN THE SOFTWARE.
 */
 
 #include "private/TestUtility.h"
@@ -236,9 +236,9 @@ private:
         Warning w{};
 
         GPIO::setmode(GPIO::BOARD);
-        GPIO::setup(pin_data.in_a, GPIO::IN);
-        GPIO::setup(pin_data.in_b, GPIO::IN);
-        GPIO::setup(pin_data.out_a, GPIO::OUT);
+        GPIO::setup(pin_data.in_a, GPIO::GPIO_IN);
+        GPIO::setup(pin_data.in_b, GPIO::GPIO_IN);
+        GPIO::setup(pin_data.out_a, GPIO::GPIO_OUT);
 
         GPIO::cleanup({pin_data.in_a, pin_data.in_b});
 
@@ -254,9 +254,9 @@ private:
         Warning w{};
 
         GPIO::setmode(GPIO::BOARD);
-        GPIO::setup(pin_data.in_a, GPIO::IN);
-        GPIO::setup(pin_data.in_b, GPIO::IN);
-        GPIO::setup(pin_data.out_a, GPIO::OUT);
+        GPIO::setup(pin_data.in_a, GPIO::GPIO_IN);
+        GPIO::setup(pin_data.in_b, GPIO::GPIO_IN);
+        GPIO::setup(pin_data.out_a, GPIO::GPIO_OUT);
 
         std::vector<int> channels = {pin_data.in_a, pin_data.in_b};
         GPIO::cleanup(channels);
@@ -271,7 +271,7 @@ private:
     {
         GPIO::setmode(GPIO::BOARD);
         assert::is_true(GPIO::getmode() == GPIO::BOARD);
-        GPIO::setup(pin_data.in_a, GPIO::IN);
+        GPIO::setup(pin_data.in_a, GPIO::GPIO_IN);
         GPIO::cleanup();
         assert::is_true(GPIO::getmode() == GPIO::NumberingModes::None);
     }
@@ -280,7 +280,7 @@ private:
     {
         GPIO::setmode(GPIO::BCM);
         assert::is_true(GPIO::getmode() == GPIO::BCM);
-        GPIO::setup(bcm_pin, GPIO::IN);
+        GPIO::setup(bcm_pin, GPIO::GPIO_IN);
         GPIO::cleanup();
         assert::is_true(GPIO::getmode() == GPIO::NumberingModes::None);
     }
@@ -289,7 +289,7 @@ private:
     {
         GPIO::setmode(GPIO::CVM);
         assert::is_true(GPIO::getmode() == GPIO::CVM);
-        GPIO::setup(pin_data.cvm_pin, GPIO::IN);
+        GPIO::setup(pin_data.cvm_pin, GPIO::GPIO_IN);
         GPIO::cleanup();
         assert::is_true(GPIO::getmode() == GPIO::NumberingModes::None);
     }
@@ -298,7 +298,7 @@ private:
     {
         GPIO::setmode(GPIO::TEGRA_SOC);
         assert::is_true(GPIO::getmode() == GPIO::TEGRA_SOC);
-        GPIO::setup(pin_data.tegra_soc_pin, GPIO::IN);
+        GPIO::setup(pin_data.tegra_soc_pin, GPIO::GPIO_IN);
         GPIO::cleanup();
         assert::is_true(GPIO::getmode() == GPIO::NumberingModes::None);
     }
@@ -306,11 +306,11 @@ private:
     void test_setup_twice()
     {
         GPIO::setmode(GPIO::BOARD);
-        GPIO::setup(pin_data.out_a, GPIO::OUT, GPIO::HIGH);
-        GPIO::setup(pin_data.out_a, GPIO::OUT, GPIO::HIGH);
+        GPIO::setup(pin_data.out_a, GPIO::GPIO_OUT, GPIO::HIGH);
+        GPIO::setup(pin_data.out_a, GPIO::GPIO_OUT, GPIO::HIGH);
 
-        GPIO::setup(pin_data.in_a, GPIO::IN);
-        GPIO::setup(pin_data.in_a, GPIO::IN);
+        GPIO::setup(pin_data.in_a, GPIO::GPIO_IN);
+        GPIO::setup(pin_data.in_a, GPIO::GPIO_IN);
 
         auto val = GPIO::input(pin_data.in_a);
         assert::is_true(val == GPIO::HIGH);
@@ -321,28 +321,28 @@ private:
     void test_setup_one_out_no_init()
     {
         GPIO::setmode(GPIO::BOARD);
-        GPIO::setup(pin_data.out_a, GPIO::OUT);
+        GPIO::setup(pin_data.out_a, GPIO::GPIO_OUT);
         GPIO::cleanup();
     }
 
     void test_setup_one_out_high()
     {
         GPIO::setmode(GPIO::BOARD);
-        GPIO::setup(pin_data.out_a, GPIO::OUT, GPIO::HIGH);
+        GPIO::setup(pin_data.out_a, GPIO::GPIO_OUT, GPIO::HIGH);
         GPIO::cleanup();
     }
 
     void test_setup_one_out_low()
     {
         GPIO::setmode(GPIO::BOARD);
-        GPIO::setup(pin_data.out_a, GPIO::OUT, GPIO::LOW);
+        GPIO::setup(pin_data.out_a, GPIO::GPIO_OUT, GPIO::LOW);
         GPIO::cleanup();
     }
 
     void test_setup_one_in()
     {
         GPIO::setmode(GPIO::BOARD);
-        GPIO::setup(pin_data.in_a, GPIO::IN);
+        GPIO::setup(pin_data.in_a, GPIO::GPIO_IN);
         GPIO::cleanup();
     }
 
@@ -353,7 +353,7 @@ private:
         {
             if (is_in(pin, pin_data.unimplemented_pins))
                 continue;
-            GPIO::setup(pin, GPIO::IN);
+            GPIO::setup(pin, GPIO::GPIO_IN);
         }
         GPIO::cleanup();
     }
@@ -372,21 +372,21 @@ private:
             pins.emplace_back(pin);
         }
 
-        GPIO::setup(pins, GPIO::IN);
+        GPIO::setup(pins, GPIO::GPIO_IN);
         GPIO::cleanup();
     }
 
     void test_setup_multiple_outputs0()
     {
         GPIO::setmode(GPIO::BOARD);
-        GPIO::setup({pin_data.out_a, pin_data.out_b}, GPIO::OUT);
+        GPIO::setup({pin_data.out_a, pin_data.out_b}, GPIO::GPIO_OUT);
         GPIO::cleanup();
     }
 
     void test_setup_multiple_outputs1()
     {
         GPIO::setmode(GPIO::BOARD);
-        GPIO::setup({pin_data.out_a, pin_data.out_b}, GPIO::OUT, {GPIO::HIGH, GPIO::LOW});
+        GPIO::setup({pin_data.out_a, pin_data.out_b}, GPIO::GPIO_OUT, {GPIO::HIGH, GPIO::LOW});
         GPIO::cleanup();
     }
 
@@ -394,7 +394,7 @@ private:
     void test_setup_multiple_outputs2()
     {
         GPIO::setmode(GPIO::BOARD);
-        GPIO::setup({std::to_string(pin_data.out_a), std::to_string(pin_data.out_b)}, GPIO::OUT, {GPIO::LOW, GPIO::HIGH});
+        GPIO::setup({std::to_string(pin_data.out_a), std::to_string(pin_data.out_b)}, GPIO::GPIO_OUT, {GPIO::LOW, GPIO::HIGH});
         GPIO::cleanup();
     }
 
@@ -402,7 +402,7 @@ private:
     void test_cleanup_one()
     {
         GPIO::setmode(GPIO::BOARD);
-        GPIO::setup(pin_data.in_a, GPIO::IN);
+        GPIO::setup(pin_data.in_a, GPIO::GPIO_IN);
         GPIO::cleanup(pin_data.in_a);
         assert::is_true(GPIO::getmode() == GPIO::BOARD);
         GPIO::cleanup();
@@ -412,8 +412,8 @@ private:
     void test_cleanup_all()
     {
         GPIO::setmode(GPIO::BOARD);
-        GPIO::setup(pin_data.in_a, GPIO::IN);
-        GPIO::setup(pin_data.in_b, GPIO::IN);
+        GPIO::setup(pin_data.in_a, GPIO::GPIO_IN);
+        GPIO::setup(pin_data.in_b, GPIO::GPIO_IN);
         GPIO::cleanup();
         assert::is_true(GPIO::getmode() == GPIO::NumberingModes::None);
     }
@@ -421,7 +421,7 @@ private:
     void test_input()
     {
         GPIO::setmode(GPIO::BOARD);
-        GPIO::setup(pin_data.in_a, GPIO::IN);
+        GPIO::setup(pin_data.in_a, GPIO::GPIO_IN);
         GPIO::input(pin_data.in_a);
         GPIO::cleanup();
     }
@@ -429,7 +429,7 @@ private:
     void test_output_one()
     {
         GPIO::setmode(GPIO::BOARD);
-        GPIO::setup(pin_data.out_a, GPIO::OUT);
+        GPIO::setup(pin_data.out_a, GPIO::GPIO_OUT);
         GPIO::output(pin_data.out_a, GPIO::HIGH);
         GPIO::output(pin_data.out_a, GPIO::LOW);
         GPIO::cleanup();
@@ -439,7 +439,7 @@ private:
     {
         GPIO::setmode(GPIO::BOARD);
         std::vector<int> channels = {pin_data.out_a, pin_data.out_b};
-        GPIO::setup(channels, GPIO::OUT);
+        GPIO::setup(channels, GPIO::GPIO_OUT);
         GPIO::output(channels, GPIO::HIGH);
         GPIO::output(channels, GPIO::LOW);
         GPIO::cleanup();
@@ -449,7 +449,7 @@ private:
     {
         GPIO::setmode(GPIO::BOARD);
         std::vector<int> channels = {pin_data.out_a, pin_data.out_b};
-        GPIO::setup(channels, GPIO::OUT);
+        GPIO::setup(channels, GPIO::GPIO_OUT);
         GPIO::output(channels, {GPIO::HIGH, GPIO::LOW});
         GPIO::output(channels, {GPIO::LOW, GPIO::HIGH});
         GPIO::cleanup();
@@ -458,8 +458,8 @@ private:
     void test_out_in_init_high()
     {
         GPIO::setmode(GPIO::BOARD);
-        GPIO::setup(pin_data.out_a, GPIO::OUT, GPIO::HIGH);
-        GPIO::setup(pin_data.in_a, GPIO::IN);
+        GPIO::setup(pin_data.out_a, GPIO::GPIO_OUT, GPIO::HIGH);
+        GPIO::setup(pin_data.in_a, GPIO::GPIO_IN);
 
         auto val = GPIO::input(pin_data.in_a);
         assert::is_true(val == GPIO::HIGH);
@@ -478,8 +478,8 @@ private:
     void test_out_in_init_low()
     {
         GPIO::setmode(GPIO::BOARD);
-        GPIO::setup(pin_data.out_a, GPIO::OUT, GPIO::LOW);
-        GPIO::setup(pin_data.in_a, GPIO::IN);
+        GPIO::setup(pin_data.out_a, GPIO::GPIO_OUT, GPIO::LOW);
+        GPIO::setup(pin_data.in_a, GPIO::GPIO_IN);
 
         auto val = GPIO::input(pin_data.in_a);
         assert::is_true(val == GPIO::LOW);
@@ -506,26 +506,26 @@ private:
     void test_gpio_function_in()
     {
         GPIO::setmode(GPIO::BOARD);
-        GPIO::setup(pin_data.in_a, GPIO::IN);
+        GPIO::setup(pin_data.in_a, GPIO::GPIO_IN);
         auto val = GPIO::gpio_function(pin_data.in_a);
-        assert::is_true(val == GPIO::Directions::IN);
+        assert::is_true(val == GPIO::Directions::GPIO_IN);
         GPIO::cleanup();
     }
 
     void test_gpio_function_out()
     {
         GPIO::setmode(GPIO::BOARD);
-        GPIO::setup(pin_data.out_a, GPIO::OUT);
+        GPIO::setup(pin_data.out_a, GPIO::GPIO_OUT);
         auto val = GPIO::gpio_function(pin_data.out_a);
-        assert::is_true(val == GPIO::Directions::OUT);
+        assert::is_true(val == GPIO::Directions::GPIO_OUT);
         GPIO::cleanup();
     }
 
     void test_wait_for_edge_rising()
     {
         GPIO::setmode(GPIO::BOARD);
-        GPIO::setup(pin_data.out_a, GPIO::OUT, GPIO::LOW);
-        GPIO::setup(pin_data.in_a, GPIO::IN);
+        GPIO::setup(pin_data.out_a, GPIO::GPIO_OUT, GPIO::LOW);
+        GPIO::setup(pin_data.in_a, GPIO::GPIO_IN);
         auto dsc = DelayedSetChannel(pin_data.out_a, GPIO::HIGH, 0.5);
         auto result = GPIO::wait_for_edge(pin_data.in_a, GPIO::RISING, 10, 1000);
         dsc.wait();
@@ -537,8 +537,8 @@ private:
     void test_wait_for_edge_falling()
     {
         GPIO::setmode(GPIO::BOARD);
-        GPIO::setup(pin_data.out_a, GPIO::OUT, GPIO::HIGH);
-        GPIO::setup(pin_data.in_a, GPIO::IN);
+        GPIO::setup(pin_data.out_a, GPIO::GPIO_OUT, GPIO::HIGH);
+        GPIO::setup(pin_data.in_a, GPIO::GPIO_IN);
         auto dsc = DelayedSetChannel(pin_data.out_a, GPIO::LOW, 0.5);
         auto result = GPIO::wait_for_edge(pin_data.in_a, GPIO::FALLING, 10, 1000);
         dsc.wait();
@@ -644,8 +644,8 @@ private:
         for (auto pct : {25.0, 50.0, 75.0})
         {
             GPIO::setmode(GPIO::BOARD);
-            GPIO::setup(pin_data.in_a, GPIO::IN);
-            GPIO::setup(pin_data.out_a, GPIO::OUT, GPIO::HIGH);
+            GPIO::setup(pin_data.in_a, GPIO::GPIO_IN);
+            GPIO::setup(pin_data.out_a, GPIO::GPIO_OUT, GPIO::HIGH);
 
             int count = 0;
 
@@ -669,7 +669,7 @@ private:
     void test_pwm_change_frequency()
     {
         GPIO::setmode(GPIO::BOARD);
-        GPIO::setup(pin_data.out_a, GPIO::OUT, GPIO::HIGH);
+        GPIO::setup(pin_data.out_a, GPIO::GPIO_OUT, GPIO::HIGH);
         GPIO::PWM p(pin_data.out_a, 500);
         p.start(50.0);
         p.ChangeFrequency(550);
@@ -680,7 +680,7 @@ private:
     void test_pwm_change_duty_cycle()
     {
         GPIO::setmode(GPIO::BOARD);
-        GPIO::setup(pin_data.out_a, GPIO::OUT, GPIO::HIGH);
+        GPIO::setup(pin_data.out_a, GPIO::GPIO_OUT, GPIO::HIGH);
         GPIO::PWM p(pin_data.out_a, 500);
         p.start(50.0);
         p.ChangeDutyCycle(60.0);
@@ -691,7 +691,7 @@ private:
     void test_pwm_cleanup_none()
     {
         GPIO::setmode(GPIO::BOARD);
-        GPIO::setup(pin_data.out_a, GPIO::OUT, GPIO::HIGH);
+        GPIO::setup(pin_data.out_a, GPIO::GPIO_OUT, GPIO::HIGH);
         GPIO::PWM p(pin_data.out_a, 500);
         p.start(50.0);
         GPIO::cleanup();
@@ -700,7 +700,7 @@ private:
     void test_pwm_cleanup_stop()
     {
         GPIO::setmode(GPIO::BOARD);
-        GPIO::setup(pin_data.out_a, GPIO::OUT, GPIO::HIGH);
+        GPIO::setup(pin_data.out_a, GPIO::GPIO_OUT, GPIO::HIGH);
         GPIO::PWM p(pin_data.out_a, 500);
         p.start(50.0);
         p.stop();
@@ -710,7 +710,7 @@ private:
     void test_pwm_cleanup_del()
     {
         GPIO::setmode(GPIO::BOARD);
-        GPIO::setup(pin_data.out_a, GPIO::OUT, GPIO::HIGH);
+        GPIO::setup(pin_data.out_a, GPIO::GPIO_OUT, GPIO::HIGH);
         { // scope for p
             GPIO::PWM p(pin_data.out_a, 500);
             p.start(50.0);
@@ -723,7 +723,7 @@ private:
         for (auto& pin : pin_data.all_pwms)
         {
             GPIO::setmode(GPIO::BOARD);
-            GPIO::setup(pin, GPIO::OUT, GPIO::HIGH);
+            GPIO::setup(pin, GPIO::GPIO_OUT, GPIO::HIGH);
             GPIO::PWM p(pin, 500);
             p.start(50.0);
             p.stop();
@@ -734,7 +734,7 @@ private:
     void test_add_callback_before_add_event_detect()
     {
         GPIO::setmode(GPIO::BOARD);
-        GPIO::setup(pin_data.in_a, GPIO::IN);
+        GPIO::setup(pin_data.in_a, GPIO::GPIO_IN);
 
         bool event_callback_occurred = false;
         TestCallback callback(&event_callback_occurred, std::to_string(pin_data.in_a));
@@ -834,8 +834,8 @@ private:
         bool event_callback_occurred = false;
 
         GPIO::setmode(GPIO::BOARD);
-        GPIO::setup(pin_data.out_a, GPIO::OUT, init);
-        GPIO::setup(pin_data.in_a, GPIO::IN);
+        GPIO::setup(pin_data.out_a, GPIO::GPIO_OUT, init);
+        GPIO::setup(pin_data.in_a, GPIO::GPIO_IN);
 
         TestCallback callback(&event_callback_occurred, std::to_string(pin_data.in_a));
 

@@ -60,30 +60,30 @@ The GPIO channel must be set up before use as input or output. To configure
 the channel as input, call:
 ```cpp
 // (where channel is based on the pin numbering mode discussed above)
-GPIO::setup(channel, GPIO::IN); // channel must be int or std::string
+GPIO::setup(channel, GPIO::GPIO_IN); // channel must be int or std::string
 ```
 
 To set up a channel as output, call:
 ```cpp
-GPIO::setup(channel, GPIO::OUT);
+GPIO::setup(channel, GPIO::GPIO_OUT);
 ```
 
 It is also possible to specify an initial value for the output channel:
 ```cpp
-GPIO::setup(channel, GPIO::OUT, GPIO::HIGH);
+GPIO::setup(channel, GPIO::GPIO_OUT, GPIO::HIGH);
 ```
 
 Setting up multiple channels is also supported. 
 ```cpp
 // setup multiple channels as input
-GPIO::setup({chan1, chan2}, GPIO::IN);
+GPIO::setup({chan1, chan2}, GPIO::GPIO_IN);
 
 // setup multiple output channels. The initial value(GPIO::HIGH) is optional. 
 std::vector<int> channels = {chan3, chan4, chan5};  // or std::vector<std::string>
-GPIO::setup(channels, GPIO::OUT, GPIO::HIGH);
+GPIO::setup(channels, GPIO::GPIO_OUT, GPIO::HIGH);
 
 // setup multiple output channels with multiple initial values. The number of channels and number of values must be equal. 
-GPIO::setup({chan6, chan7}, GPIO::OUT, {GPIO::HIGH, GPIO::LOW});
+GPIO::setup({chan6, chan7}, GPIO::GPIO_OUT, {GPIO::HIGH, GPIO::LOW});
 ```
 
 
@@ -312,7 +312,7 @@ This feature allows you to check the function of the provided GPIO channel:
 GPIO::Directions direction = GPIO::gpio_function(channel);
 ```
 
-The function returns either `GPIO::IN` or `GPIO::OUT` which are the instances of enum class `GPIO::Directions`.
+The function returns either `GPIO::GPIO_IN` or `GPIO::GPIO_OUT` which are the instances of enum class `GPIO::Directions`.
 
 #### 11. PWM  
 > [!NOTE]

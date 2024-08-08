@@ -16,11 +16,11 @@ all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. GPIO_IN NO EVENT SHALL
 THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-DEALINGS IN THE SOFTWARE.
+LIABILITY, WHETHER GPIO_IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, GPIO_OUT OF OR GPIO_IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS GPIO_IN THE SOFTWARE.
 */
 
 #include <iostream>
@@ -127,9 +127,9 @@ namespace GPIO
         } // scope ends
 
         if (gpio_direction == "in")
-            return IN;
+            return GPIO_IN;
         else if (gpio_direction == "out")
-            return OUT;
+            return GPIO_OUT;
         else
             return UNKNOWN; // Originally returns None in NVIDIA's GPIO Python Library
     }
@@ -197,7 +197,7 @@ namespace GPIO
         if (!is_None(initial))
             _output_one(ch_info, initial);
 
-        _channel_configuration[ch_info.channel] = OUT;
+        _channel_configuration[ch_info.channel] = GPIO_OUT;
     }
 
     void MainModule::_setup_single_in(const ChannelInfo& ch_info)
@@ -208,7 +208,7 @@ namespace GPIO
         *ch_info.f_direction << "in";
         ch_info.f_direction->flush();
 
-        _channel_configuration[ch_info.channel] = IN;
+        _channel_configuration[ch_info.channel] = GPIO_IN;
     }
 
     string MainModule::_pwm_path(const ChannelInfo& ch_info)
